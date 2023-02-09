@@ -76,7 +76,7 @@
   width: 100%;
   border: none;
   height: 28px;
-  border-bottom: 1px solid var(--gray-suit-color);
+  border-bottom: 1px solid var(--gray-suit-03-color);
 }
 
 .modal__contact {

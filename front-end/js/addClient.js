@@ -20,15 +20,28 @@ export const addClientModal = () => {
     createForm.form
   );
 
-  createForm.modalClose.addEventListener('click', () => {
-    modal.remove()
-  })
+  createForm.form.addEventListener('submit', e => {
+    e.preventDefault();
 
-  document.addEventListener('click', (e) => {
-    if(e.target === modal) {
-      modal.remove()
+    let contacts = [];
+    let clientObj = {};
+
+    clientObj.name = createForm.inputName.value;
+    clientObj.surname = createForm.inputSurname.value;
+    clientObj.lastName = createForm.inputLastName.value;
+    clientObj.contacts = contacts;
+    console.log(clientObj);
+  });
+
+  createForm.modalClose.addEventListener('click', () => {
+    modal.remove();
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target == modal) {
+      modal.remove();
     }
-  })
+  });
 
   return modal;
 };

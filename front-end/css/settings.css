@@ -37,7 +37,6 @@ html {
 
 body {
   font-family: 'Open-sans', sans-serif;
-  margin: 0;
   background-color: var(--wild-sand-color);
 }
 
@@ -84,6 +83,11 @@ input {
   --mine-shaft-color: #333333;
   --heliotrope-color: #9873ff;
   --gray-suit-color: #c8c5d1;
+  --gray-suit-03-color: #c8c5d130;
+  --gray-suit-02-color: #c8c5d120;
+  --mischka-color: #e7e5eb;
+  --athens-gray-color: #f4f3f6;
+  --burnt-sienna-color: #f06a4d;
 }
 
 .container {
@@ -121,4 +125,28 @@ input {
 .site-btn {
   background-color: var(--heliotrope-color);
   color: var(--white-color)
+}
+
+.site-tooltip {
+  position: absolute;
+  top: -41px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+  padding: 7px 15px;
+  background-color: var(--mine-shaft-color);
+}
+
+.site-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%);
+  clip-path: polygon(100% 0, 0 0, 51% 100%);
+  background-color: var(--mine-shaft-color);
 }
