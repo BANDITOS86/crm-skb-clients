@@ -83,10 +83,42 @@ input {
   --silver-chalice-color: #b0b0b0;
   --mine-shaft-color: #333333;
   --heliotrope-color: #9873ff;
+  --gray-suit-color: #c8c5d1;
 }
 
 .container {
   max-width: 1216px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.site-modal {
+  position: absolute;
+  overflow-x: auto;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #33333360;
+  opacity: 0;
+}
+
+.site-modal__content {
+  max-width: 450px;
+  cursor: auto;
+  position: absolute;
+  padding: 25px 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.15);
+  background-color: var(--white-color);
+  opacity: 0;
+}
+
+.site-btn {
+  background-color: var(--heliotrope-color);
+  color: var(--white-color)
 }

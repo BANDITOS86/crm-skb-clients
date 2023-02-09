@@ -16,7 +16,7 @@ export const createClientsHeader = () => {
   logoImg.alt = 'Логотип CRM-системы SKB';
   form.classList.add('header__form');
   input.classList.add('header__input');
-  input.placeholder = 'Введите запрос'
+  input.placeholder = 'Введите запрос';
   wrapper.classList.add('header__wrapper');
   inner.classList.add('header__inner');
 
@@ -26,4 +26,4 @@ export const createClientsHeader = () => {
   container.append(logo, form);
 
   return header;
-}
+};
