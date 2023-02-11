@@ -1,3 +1,4 @@
+// Создание разментки добавления новго контакта
 import { svgDelete } from './svg.js';
 
 export const createContactItem = () => {
@@ -37,6 +38,49 @@ export const createContactItem = () => {
   contactInput.placeholder = 'Введите данные контакта';
   contactInput.type = 'text';
   contactDelete.innerHTML = svgDelete;
+
+  // Удаление поля добавления нового контакта
+  contactDelete.addEventListener('click', e => {
+    e.preventDefault();
+    contact.remove();
+    // Делаем кнопку "доавить контакт" активной при удалении поля нового контакта
+    document
+      .querySelector('.modal__btn-contact')
+      .classList.add('modal__btn-contact--active');
+  });
+
+  // Открытие/закрытие меню выбора вида контакта
+  contactName.addEventListener('click', e => {
+    e.preventDefault();
+    contactList.classList.toggle('contact__list--active');
+    contactName.classList.toggle('contact__list--active');
+  });
+
+  // Если курсор на меню, тогда оно открыто, если убрали курсор, меню закрылось
+  contactType.addEventListener('mouseleave', () => {
+    contactList.classList.remove('contact__list--active');
+    contactName.classList.remove('contact__list--active');
+  });
+
+  const setType = type => {
+    type.addEventListener('click', () => {
+      contactName.textContent = type.textContent;
+      contactList.classList.remove('contact__list--active');
+      contactName.classList.remove('contact__list--active');
+    });
+  };
+
+  const typesArray = [
+    contactEmail,
+    contactFb,
+    contactVk,
+    contactPhone,
+    contactOther,
+  ];
+  
+  for (const type of typesArray) {
+    setType(type);
+  }
 
   contactDelete.append(contactDeleteTooltip);
   contact.append(contactType, contactInput, contactDelete);

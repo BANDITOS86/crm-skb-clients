@@ -1,3 +1,5 @@
+// Создание модального окна
+import { createClient } from './clientsApi.js'
 import { createClientsForm } from './createModalForm.js';
 
 export const addClientModal = () => {
@@ -20,23 +22,38 @@ export const addClientModal = () => {
     createForm.form
   );
 
-  createForm.form.addEventListener('submit', e => {
+  // Создание объекта клиента и отправка на сервер
+  createForm.form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    const contactTypes = document.querySelectorAll('.contact__name');
+    const contactValues = document.querySelectorAll('.contact__input');
 
     let contacts = [];
     let clientObj = {};
+
+    for (let i = 0; i < contactTypes.length; i++) {
+      contacts.push({
+          type: contactTypes[i].innerHTML,
+          value: contactValues[i].value
+      });
+    }
 
     clientObj.name = createForm.inputName.value;
     clientObj.surname = createForm.inputSurname.value;
     clientObj.lastName = createForm.inputLastName.value;
     clientObj.contacts = contacts;
     console.log(clientObj);
+
+    await createClient(clientObj)
   });
 
+  // Закрытие модального окна
   createForm.modalClose.addEventListener('click', () => {
     modal.remove();
   });
 
+  // Закрытие модально окна вне модабного окна
   document.addEventListener('click', e => {
     if (e.target == modal) {
       modal.remove();

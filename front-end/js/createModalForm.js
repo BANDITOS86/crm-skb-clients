@@ -1,3 +1,4 @@
+// Создание разметки модального окна по добовлению нового клиента
 import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
 
@@ -95,6 +96,7 @@ export const createClientsForm = () => {
 
   addContactBtn.append(contactBtnSvgDefault, contactBtnSvgHover);
 
+  // Добавление контакта, если полей добавления 10, тогда исчезает кнопка "добавить контакт"
   addContactBtn.addEventListener('click', e => {
     e.preventDefault();
     const contactsItems = document.getElementsByClassName('contact');
@@ -103,6 +105,12 @@ export const createClientsForm = () => {
       const contactItem = createContactItem();
       contactsBlock.prepend(contactItem.contact);
       contactsBlock.style.backgroundColor = 'var(--gray-suit-02-color)';
+      // если полей 5, тогда модальное окно ниже от верха на 70%
+      if(contactsItems.length >= 5) {
+        document.querySelector('.modal__content').style.top = '70%';
+      } else {
+        document.querySelector('.modal__content').style.top = '50%';
+      }
     } else {
       const contactItem = createContactItem();
       contactsBlock.prepend(contactItem.contact);
@@ -110,6 +118,7 @@ export const createClientsForm = () => {
     }
   });
 
+  // Инверсия цвета иконки в кнопке добавить клиента
   addContactBtn.addEventListener('mousemove', () => {
     contactBtnSvgDefault.classList.remove('btn-contact__svg--active');
     contactBtnSvgHover.classList.add('btn-contact__svg--active');

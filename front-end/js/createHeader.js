@@ -1,3 +1,4 @@
+// Файл создание разметки header
 export const createClientsHeader = () => {
   const header = document.createElement('header');
   const logo = document.createElement('a');

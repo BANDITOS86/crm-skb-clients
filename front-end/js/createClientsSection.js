@@ -1,3 +1,4 @@
+// Создание секции с заголовком и таблицей
 import { addClientModal } from './addClient.js';
 import { svgAddUser } from './svg.js';
 
@@ -76,6 +77,7 @@ export const createClientsSection = () => {
   addUserBtn.textContent = 'Добавить клиента';
   addUserBtnSvg.innerHTML = svgAddUser;
 
+  // Открытие модального окна при нажатии на кнопку добавить новго клиента
   addUserBtn.addEventListener('click', () => {
     document.body.append(addClientModal());
   });
