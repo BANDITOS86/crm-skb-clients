@@ -53,7 +53,7 @@ export const addClientModal = () => {
     modal.remove();
   });
 
-  // Закрытие модально окна вне модабного окна
+  // Закрытие модально окна вне модального окна
   document.addEventListener('click', e => {
     if (e.target == modal) {
       modal.remove();

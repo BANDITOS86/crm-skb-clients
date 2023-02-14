@@ -38,21 +38,11 @@ export const createClientsForm = () => {
   labelLastName.classList.add('modal__label');
   requiredName.classList.add('modal__label');
   requiredSurname.classList.add('modal__label');
-  addContactBtn.classList.add(
-    'modal__btn-contact',
-    'modal__btn-contact--active'
-  );
+  addContactBtn.classList.add('modal__btn-contact', 'modal__btn-contact--active');
   saveBtn.classList.add('modal__btn-save', 'btn-reset', 'site-btn');
   cancelBtn.classList.add('modal__btn-back', 'btn-reset');
-  contactBtnSvgDefault.classList.add(
-    'btn-contact__svg',
-    'btn-contact__svg--default',
-    'btn-contact__svg--active'
-  );
-  contactBtnSvgHover.classList.add(
-    'btn-contact__svg',
-    'btn-contact__svg--hover'
-  );
+  contactBtnSvgDefault.classList.add('btn-contact__svg', 'btn-contact__svg--default', 'btn-contact__svg--active');
+  contactBtnSvgHover.classList.add('btn-contact__svg', 'btn-contact__svg--hover');
   contactsBlock.classList.add('modal__contact');
   labelName.for = 'floatingName';
   labelSurname.for = 'floatingSurname';
