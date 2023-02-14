@@ -1,5 +1,5 @@
 // Создание модального окна
-import { createClient } from './clientsApi.js'
+import { sendClientData } from './clientsApi.js';
 import { createClientsForm } from './createModalForm.js';
 
 export const addClientModal = () => {
@@ -23,7 +23,7 @@ export const addClientModal = () => {
   );
 
   // Создание объекта клиента и отправка на сервер
-  createForm.form.addEventListener('submit', async (e) => {
+  createForm.form.addEventListener('submit', async e => {
     e.preventDefault();
 
     const contactTypes = document.querySelectorAll('.contact__name');
@@ -34,8 +34,8 @@ export const addClientModal = () => {
 
     for (let i = 0; i < contactTypes.length; i++) {
       contacts.push({
-          type: contactTypes[i].innerHTML,
-          value: contactValues[i].value
+        type: contactTypes[i].innerHTML,
+        value: contactValues[i].value,
       });
     }
 
@@ -45,7 +45,7 @@ export const addClientModal = () => {
     clientObj.contacts = contacts;
     console.log(clientObj);
 
-    await createClient(clientObj)
+    await sendClientData(clientObj, 'POST');
   });
 
   // Закрытие модального окна

@@ -1,5 +1,6 @@
 // Создание секции с заголовком и таблицей
 import { addClientModal } from './addClient.js';
+import { createPreloader } from './preloader.js';
 import { svgAddUser } from './svg.js';
 
 export const createClientsSection = () => {
@@ -98,6 +99,7 @@ export const createClientsSection = () => {
   sortingDisplay.append(theadTr);
   tableWrapper.append(clientsTable);
   clientsTable.append(sortingDisplay, tbody);
+  tbody.append(createPreloader());
   addUserBtn.append(addUserBtnSvg);
   container.append(h1, tableWrapper, addUserBtn);
 
