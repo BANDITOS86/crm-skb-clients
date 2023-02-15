@@ -184,3 +184,18 @@
   border-bottom: 1px solid var(--mine-shaft-color);
   color: var(--mine-shaft-color);
 }
+
+.modal__error {
+  margin: 0;
+  margin-top: -17px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  max-width: 255px;
+  color: var(--burnt-sienna-color);
+}

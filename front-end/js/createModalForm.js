@@ -1,6 +1,7 @@
 // Создание разметки модального окна по добовлению нового клиента
 import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
+import { validateClientForm } from "./validateForm.js";
 
 export const createClientsForm = () => {
   const modalTitle = document.createElement('h2');
@@ -24,6 +25,14 @@ export const createClientsForm = () => {
   const formFloatingSurname = document.createElement('div');
   const formFloatingLastName = document.createElement('div');
 
+  const errorBlock = document.createElement('p');
+  const unacceptableLetter = document.createElement('span');
+  const writeName = document.createElement('span');
+  const writeSurname = document.createElement('span');
+  const writeLastName = document.createElement('span');
+  const requiredValue = document.createElement('span');
+  const requiredContacts = document.createElement('span');
+
   modalTitle.classList.add('modal__title');
   modalClose.classList.add('modal__close', 'btn-reset');
   form.classList.add('modal__form');
@@ -38,11 +47,21 @@ export const createClientsForm = () => {
   labelLastName.classList.add('modal__label');
   requiredName.classList.add('modal__label');
   requiredSurname.classList.add('modal__label');
-  addContactBtn.classList.add('modal__btn-contact', 'modal__btn-contact--active');
+  addContactBtn.classList.add(
+    'modal__btn-contact',
+    'modal__btn-contact--active'
+  );
   saveBtn.classList.add('modal__btn-save', 'btn-reset', 'site-btn');
   cancelBtn.classList.add('modal__btn-back', 'btn-reset');
-  contactBtnSvgDefault.classList.add('btn-contact__svg', 'btn-contact__svg--default', 'btn-contact__svg--active');
-  contactBtnSvgHover.classList.add('btn-contact__svg', 'btn-contact__svg--hover');
+  contactBtnSvgDefault.classList.add(
+    'btn-contact__svg',
+    'btn-contact__svg--default',
+    'btn-contact__svg--active'
+  );
+  contactBtnSvgHover.classList.add(
+    'btn-contact__svg',
+    'btn-contact__svg--hover'
+  );
   contactsBlock.classList.add('modal__contact');
   labelName.for = 'floatingName';
   labelSurname.for = 'floatingSurname';
@@ -56,6 +75,14 @@ export const createClientsForm = () => {
   inputName.placeholder = 'Имя';
   inputSurname.placeholder = 'Фамилия';
   inputLastName.placeholder = 'Отчество';
+
+  errorBlock.classList.add('modal__error');
+  unacceptableLetter.id = 'unacceptableLetter';
+  writeName.id = 'writeName';
+  writeSurname.id = 'writeSurname';
+  writeLastName.id = 'writeLastName';
+  requiredValue.id = 'requiredValue';
+  requiredContacts.id = 'requiredContacts';
 
   modalTitle.textContent = 'Новый клиент';
   labelName.textContent = 'Имя';
@@ -75,11 +102,13 @@ export const createClientsForm = () => {
   formFloatingSurname.append(inputSurname, labelSurname);
   formFloatingLastName.append(inputLastName, labelLastName);
   contactsBlock.append(addContactBtn);
+  errorBlock.append(writeName, writeSurname, writeLastName, requiredValue, unacceptableLetter, requiredContacts);
   form.append(
     formFloatingName,
     formFloatingSurname,
     formFloatingLastName,
     contactsBlock,
+    errorBlock,
     saveBtn,
     cancelBtn
   );
@@ -96,7 +125,7 @@ export const createClientsForm = () => {
       contactsBlock.prepend(contactItem.contact);
       contactsBlock.style.backgroundColor = 'var(--gray-suit-02-color)';
       // если полей 5, тогда модальное окно ниже от верха на 70%
-      if(contactsItems.length >= 5) {
+      if (contactsItems.length >= 5) {
         document.querySelector('.modal__content').style.top = '70%';
       } else {
         document.querySelector('.modal__content').style.top = '50%';
