@@ -2,6 +2,7 @@
 import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
 import { validateClientForm } from "./validateForm.js";
+import { svgSpinner } from './svg.js';
 
 export const createClientsForm = () => {
   const modalTitle = document.createElement('h2');
@@ -24,6 +25,7 @@ export const createClientsForm = () => {
   const formFloatingName = document.createElement('div');
   const formFloatingSurname = document.createElement('div');
   const formFloatingLastName = document.createElement('div');
+  const saveSpinner = document.createElement('span');
 
   const errorBlock = document.createElement('p');
   const unacceptableLetter = document.createElement('span');
@@ -33,6 +35,7 @@ export const createClientsForm = () => {
   const requiredValue = document.createElement('span');
   const requiredContacts = document.createElement('span');
 
+  saveSpinner.classList.add('modal__spinner')
   modalTitle.classList.add('modal__title');
   modalClose.classList.add('modal__close', 'btn-reset');
   form.classList.add('modal__form');
@@ -84,6 +87,7 @@ export const createClientsForm = () => {
   requiredValue.id = 'requiredValue';
   requiredContacts.id = 'requiredContacts';
 
+  saveSpinner.innerHTML = svgSpinner;
   modalTitle.textContent = 'Новый клиент';
   labelName.textContent = 'Имя';
   labelSurname.textContent = 'Фамилия';
@@ -97,6 +101,7 @@ export const createClientsForm = () => {
   contactBtnSvgHover.innerHTML = svgContactHover;
 
   labelName.append(requiredName);
+  saveBtn.append(saveSpinner);
   labelSurname.append(requiredSurname);
   formFloatingName.append(inputName, labelName);
   formFloatingSurname.append(inputSurname, labelSurname);
@@ -126,9 +131,9 @@ export const createClientsForm = () => {
       contactsBlock.style.backgroundColor = 'var(--gray-suit-02-color)';
       // если полей 5, тогда модальное окно ниже от верха на 70%
       if (contactsItems.length >= 5) {
-        document.querySelector('.modal__content').style.top = '70%';
+        document.querySelector('.site-modal__content').style.top = '70%';
       } else {
-        document.querySelector('.modal__content').style.top = '50%';
+        document.querySelector('.site-modal__content').style.top = '50%';
       }
     } else {
       const contactItem = createContactItem();

@@ -1,4 +1,6 @@
 // Создание разметки модального окна при нажатии на удалить
+import { svgSpinner } from './svg.js';
+
 export const deleteClientModal = () => {
   const deleteModalContent = document.createElement('div');
   const modalClose = document.createElement('button');
@@ -7,7 +9,9 @@ export const deleteClientModal = () => {
   const deleteModal = document.createElement('div');
   const deleteModalDelete = document.createElement('button');
   const deleteModalBack = document.createElement('button');
+  const deleteSpinner = document.createElement('span');
 
+  deleteSpinner.classList.add('modal__spinner');
   deleteModal.classList.add('delete-modal', 'site-modal', 'modal-active');
   deleteModalContent.classList.add(
     'delete-modal__content',
@@ -24,12 +28,14 @@ export const deleteClientModal = () => {
   deleteModalBack.classList.add('delete-modal__back', 'btn-reset');
   modalClose.classList.add('modal__close', 'btn-reset');
 
+  deleteSpinner.innerHTML = svgSpinner;
   deleteModalTitle.textContent = 'Удалить клиента';
   deleteModalText.textContent =
     'Вы действительно хотите удалить данного клиента?';
   deleteModalDelete.textContent = 'Удалить';
   deleteModalBack.textContent = 'Отмена';
 
+  deleteModalDelete.append(deleteSpinner);
   deleteModalContent.append(
     modalClose,
     deleteModalTitle,
@@ -54,5 +60,6 @@ export const deleteClientModal = () => {
     deleteModal,
     deleteModalContent,
     deleteModalDelete,
+    deleteSpinner
   };
 };

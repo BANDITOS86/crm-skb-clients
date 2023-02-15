@@ -1,9 +1,9 @@
 // Создание модального окна
-import { sendClientData } from "./clientsApi.js";
-import { createClientItem } from "./createClientItem.js";
-import { createClientsForm } from "./createModalForm.js";
-import { validateClientContact } from "./validateContact.js";
-import { validateClientForm } from "./validateForm.js";
+import { sendClientData } from './clientsApi.js';
+import { createClientsForm } from './createModalForm.js';
+import { validateClientContact } from './validateContact.js';
+import { validateClientForm } from './validateForm.js';
+import { createClientItem } from './createClientItem.js';
 
 export const addClientModal = () => {
   const createForm = createClientsForm();
@@ -30,7 +30,7 @@ export const addClientModal = () => {
     e.preventDefault();
 
     if (!validateClientForm()) {
-      return
+      return;
     }
 
     const contactTypes = document.querySelectorAll('.contact__name');
@@ -40,8 +40,8 @@ export const addClientModal = () => {
     let clientObj = {};
 
     for (let i = 0; i < contactTypes.length; i++) {
-      if(!validateClientContact(contactTypes[i], contactValues[i])) {
-        return
+      if (!validateClientContact(contactTypes[i], contactValues[i])) {
+        return;
       }
       contacts.push({
         type: contactTypes[i].innerHTML,
@@ -55,7 +55,24 @@ export const addClientModal = () => {
     clientObj.contacts = contacts;
     console.log(clientObj);
 
-    await sendClientData(clientObj, 'POST');
+    const spinner = document.querySelector('.modal__spinner');
+
+    try {
+      spinner.style.display = 'block';
+      const data = await sendClientData(clientObj, 'POST');
+      setTimeout(() => {
+        // отрисовка клиента в таблице
+        document
+          .querySelector('.clients__tbody')
+          .append(createClientItem(data));
+        // Закрытие модалки после добавления клиента в таблицу
+        document.querySelector('.modal').remove();
+      }, 1500);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setTimeout(() => (spinner.style.display = 'block'), 1500);
+    }
   });
 
   // Закрытие модального окна
