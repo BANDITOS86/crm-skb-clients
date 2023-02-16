@@ -6,6 +6,7 @@ import { svgSpinner } from './svg.js';
 // Создание строки одного клиента
 export const createClientItem = data => {
   const clientTr = document.createElement('tr');
+  const clientIdTd = document.createElement('td');
   const clientId = document.createElement('span');
   const clientFullName = document.createElement('td');
   const clientName = document.createElement('span');
@@ -30,7 +31,7 @@ export const createClientItem = data => {
   deleteSpinner.classList.add('actions__spinner');
   clientTr.classList.add('clients__item');
   clientTr.id = data.id;
-  clientId.classList.add('client__id');
+  clientIdTd.classList.add('client__id');
   clientFullName.classList.add('clients__full-name');
   clientName.classList.add('clients__name');
   clientSurname.classList.add('clients__surname');
@@ -112,6 +113,7 @@ export const createClientItem = data => {
   changedDate.textContent = formatDate(data.updatedAt);
   changedTime.textContent = formatTime(data.updatedAt);
 
+  clientIdTd.append(clientId)
   clientFullName.append(clientName, clientSurname, clientLastName);
   clientCreated.append(createDate, createdTime);
   clientChanged.append(changedDate, changedTime);
@@ -119,7 +121,7 @@ export const createClientItem = data => {
   clientDelete.append(deleteSpinner);
   clientActions.append(clientEdit, clientDelete);
   clientTr.append(
-    clientId,
+    clientIdTd,
     clientFullName,
     clientCreated,
     clientChanged,
