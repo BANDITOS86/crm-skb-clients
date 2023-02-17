@@ -18,8 +18,13 @@
   padding: 10px;
 }
 
-.find-list__link:not(:last-child) {
-  margin-bottom: 5px;
+.find-list__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.find-list__link {
+  display: block;
+  height: 25px;
   border-bottom: 1px solid var(--gray-suit-color);
 }
 

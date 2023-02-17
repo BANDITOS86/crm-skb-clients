@@ -102,10 +102,6 @@
   padding-left: 100px;
 }
 
-.clients__tbody {
-  position: relative;
-}
-
 .clients__btn {
   display: flex;
   flex-direction: row-reverse;
@@ -167,4 +163,9 @@
 .display-info__item--change,
 .display-info__item--create {
   background-image: none;
+}
+
+.clients__wrapper {
+  position: relative;
+  overflow: auto;
 }
