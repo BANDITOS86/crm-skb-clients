@@ -30,7 +30,7 @@ export const createContactItem = () => {
 
   contactName.textContent = 'Телефон';
   contactDeleteTooltip.textContent = 'Удалить контакт';
-  contactPhone.textContent = 'Доп. телефон';
+  contactPhone.textContent = 'Телефон';
   contactVk.textContent = 'VK';
   contactEmail.textContent = 'Email';
   contactFb.textContent = 'Facebook';
@@ -90,7 +90,7 @@ export const createContactItem = () => {
     contactEmail,
     contactVk,
     contactFb,
-    contactOther
+    contactOther,
   );
 
   return {
