@@ -201,6 +201,7 @@
 }
 
 .modal__spinner {
+  margin-top: 1.5px;
   position: absolute;
   display: none;
   top: 10px;
@@ -216,6 +217,7 @@
   height: 15px;
   stroke: var(--white-color);
   fill: none;
+  transform: translate(0, 1.9px);
 }
 
 @keyframes spinner {

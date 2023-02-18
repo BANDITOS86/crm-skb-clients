@@ -80,6 +80,10 @@ export const addClientModal = () => {
     modal.remove();
   });
 
+  createForm.cancelBtn.addEventListener('click', () => {
+    modal.remove();
+  });
+
   // Закрытие модально окна вне модального окна
   document.addEventListener('click', e => {
     if (e.target == modal) {

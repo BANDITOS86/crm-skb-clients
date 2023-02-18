@@ -44,8 +44,8 @@ export const createContactItemByType = (type, value, item) => {
         case 'Other':
             let other;
             createContactLink(type, value, other, svgOther, item);  
-            break;      
-                    
+            break;  
+                           
         default:
             break;
     }

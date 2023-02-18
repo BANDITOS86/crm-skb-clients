@@ -130,6 +130,7 @@
 }
 
 .actions__spinner {
+  margin-top: 1.5px;
   display: none;
   position: absolute;
   top: 0;
@@ -143,11 +144,13 @@
 .clients__edit .actions__spinner svg {
   stroke: var(--heliotrope-color);
   fill: none;
+  transform: translate(0, 1.9px);
 }
 
 .clients__delete .actions__spinner svg {
   stroke: var(--burnt-sienna-color);
   fill: none;
+  transform: translate(0, 1.9px);
 }
 
 @keyframes spinner {
