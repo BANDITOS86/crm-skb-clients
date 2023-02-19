@@ -1,11 +1,10 @@
 import { findClient } from './clientsApi.js';
 import { createClientItem } from './createClientItem.js';
+import { hideContacts } from './hideContacts.js';
 
 export const searchClients = clients => {
   const findList = document.querySelector('.find-list');
   const input = document.querySelector('.header__input');
-  // const searchRequest = false;
-  // const requestDelay = 300;
 
   clients.forEach(client => {
     const findItem = document.createElement('li');
@@ -29,6 +28,8 @@ export const searchClients = clients => {
     for (const client of response) {
       tbody.append(createClientItem(client));
     }
+
+    hideContacts();
   };
 
   input.addEventListener('input', async () => {
@@ -37,7 +38,6 @@ export const searchClients = clients => {
 
     if (value !== '') {
       rewriteTable(value);
-
 
       foundItems.forEach(link => {
         if (link.innerText.search(value) == -1) {
