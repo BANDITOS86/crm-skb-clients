@@ -1,0 +1,12 @@
+.more-contacts .contacts__link:not(:nth-child(-n+4)) {
+  display: none;
+}
+
+.more-contacts.show .contacts__link:not(:nth-child(-n+4)) {
+  display: inline;
+}
+
+.more__button.hidden {
+  display: none;
+}
+

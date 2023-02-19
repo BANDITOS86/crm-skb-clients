@@ -5,6 +5,7 @@ import { sendClientData } from './clientsApi.js';
 import { createClientItem } from './createClientItem.js';
 import { validateClientForm } from './validateForm.js';
 import { validateClientContact } from './validateContact.js';
+import { hideContacts } from './hideContacts.js';
 
 export const editClientModal = data => {
   const editModal = document.createElement('div');
@@ -40,6 +41,7 @@ export const editClientModal = data => {
             document.getElementById(data.id).remove();
             deleteModal.deleteModal.remove();
             document.querySelector('.modal-edit').remove();
+
           }, 1500);
         } catch (error) {
           console.log(error);
@@ -109,6 +111,7 @@ export const editClientModal = data => {
         document.getElementById(editedData.id).remove();
         document.querySelector('.clients__tbody').append(createClientItem(editedData));
         document.querySelector('.modal-edit').remove();
+        hideContacts()
       }, 1500);
     } catch (error) {
       console.log(error);

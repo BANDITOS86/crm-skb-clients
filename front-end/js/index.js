@@ -4,6 +4,7 @@ import { getClients } from './clientsApi.js';
 import { createClientItem } from './createClientItem.js';
 import { sortTable } from './sortClientsTable.js';
 import { searchClients } from './searchClient.js';
+import { hideContacts } from './hideContacts.js';
 
 const createApp = async () => {
   const header = createClientsHeader();
@@ -20,6 +21,9 @@ const createApp = async () => {
     for (const client of clients) {
       document.querySelector('.clients__tbody').append(createClientItem(client));
     }
+
+    hideContacts()
+
   } catch (error) {
     console.log(error);
   } finally {
