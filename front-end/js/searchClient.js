@@ -38,7 +38,7 @@ export const searchClients = clients => {
 
     if (value !== '') {
       rewriteTable(value);
-
+      
       foundItems.forEach(link => {
         if (link.innerText.search(value) == -1) {
           link.classList.add('hide');
@@ -60,6 +60,7 @@ export const searchClients = clients => {
         tbody.innerHTML = '';
 
         clients.forEach(client => tbody.append(createClientItem(client)));
+        hideContacts();
 
         link.classList.remove('hide');
         findList.classList.add('hide');
