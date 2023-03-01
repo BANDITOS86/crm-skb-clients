@@ -38,7 +38,7 @@ export const searchClients = clients => {
 
     if (value !== '') {
       rewriteTable(value);
-      
+
       foundItems.forEach(link => {
         if (link.innerText.search(value) == -1) {
           link.classList.add('hide');

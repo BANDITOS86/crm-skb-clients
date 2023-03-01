@@ -17,13 +17,14 @@ const createApp = async () => {
     tableWrapper.style.overflow = 'visible';
     const clients = await getClients();
     searchClients(clients);
-    
+
     for (const client of clients) {
-      document.querySelector('.clients__tbody').append(createClientItem(client));
+      document
+        .querySelector('.clients__tbody')
+        .append(createClientItem(client));
     }
 
-    hideContacts()
-
+    hideContacts();
   } catch (error) {
     console.log(error);
   } finally {

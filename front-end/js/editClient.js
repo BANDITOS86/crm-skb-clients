@@ -41,7 +41,6 @@ export const editClientModal = data => {
             document.getElementById(data.id).remove();
             deleteModal.deleteModal.remove();
             document.querySelector('.modal-edit').remove();
-
           }, 1500);
         } catch (error) {
           console.log(error);
@@ -78,8 +77,8 @@ export const editClientModal = data => {
 
   createForm.form.addEventListener('submit', async e => {
     e.preventDefault();
-    if(!validateClientForm()) {
-      return
+    if (!validateClientForm()) {
+      return;
     }
 
     const contactTypes = document.querySelectorAll('.contact__name');
@@ -109,9 +108,11 @@ export const editClientModal = data => {
       const editedData = await sendClientData(client, 'PATCH', data.id);
       setTimeout(() => {
         document.getElementById(editedData.id).remove();
-        document.querySelector('.clients__tbody').append(createClientItem(editedData));
+        document
+          .querySelector('.clients__tbody')
+          .append(createClientItem(editedData));
         document.querySelector('.modal-edit').remove();
-        hideContacts()
+        hideContacts();
       }, 1500);
     } catch (error) {
       console.log(error);

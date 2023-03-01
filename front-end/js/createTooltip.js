@@ -13,8 +13,8 @@ export const contactTooltip = (type, value) => {
   tooltip.append(tooltipType, tooltipValue);
 
   return {
-      tooltip,
-      tooltipType,
-      tooltipValue
-  }
+    tooltip,
+    tooltipType,
+    tooltipValue,
+  };
 };

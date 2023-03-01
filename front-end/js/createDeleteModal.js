@@ -60,6 +60,6 @@ export const deleteClientModal = () => {
     deleteModal,
     deleteModalContent,
     deleteModalDelete,
-    deleteSpinner
+    deleteSpinner,
   };
 };

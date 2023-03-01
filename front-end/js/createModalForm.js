@@ -1,7 +1,6 @@
 // Создание разметки модального окна по добовлению нового клиента
 import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
-import { validateClientForm } from "./validateForm.js";
 import { svgSpinner } from './svg.js';
 
 export const createClientsForm = () => {
@@ -35,7 +34,7 @@ export const createClientsForm = () => {
   const requiredValue = document.createElement('span');
   const requiredContacts = document.createElement('span');
 
-  saveSpinner.classList.add('modal__spinner')
+  saveSpinner.classList.add('modal__spinner');
   modalTitle.classList.add('modal__title');
   modalClose.classList.add('modal__close', 'btn-reset');
   form.classList.add('modal__form');
@@ -107,7 +106,14 @@ export const createClientsForm = () => {
   formFloatingSurname.append(inputSurname, labelSurname);
   formFloatingLastName.append(inputLastName, labelLastName);
   contactsBlock.append(addContactBtn);
-  errorBlock.append(writeName, writeSurname, writeLastName, requiredValue, unacceptableLetter, requiredContacts);
+  errorBlock.append(
+    writeName,
+    writeSurname,
+    writeLastName,
+    requiredValue,
+    unacceptableLetter,
+    requiredContacts
+  );
   form.append(
     formFloatingName,
     formFloatingSurname,
@@ -127,6 +133,7 @@ export const createClientsForm = () => {
 
     if (contactsItems.length < 9) {
       const contactItem = createContactItem();
+
       contactsBlock.prepend(contactItem.contact);
       contactsBlock.style.backgroundColor = 'var(--gray-suit-02-color)';
       // если полей 5, тогда модальное окно ниже от верха на 70%

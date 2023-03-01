@@ -1,15 +1,15 @@
-import { svgPreloadMain } from "./svg.js";
+import { svgPreloadMain } from './svg.js';
 
 export const createPreloader = () => {
-    const preloaderBlock = document.createElement('div');
-    const preloaderCircle = document.createElement('span');
+  const preloaderBlock = document.createElement('div');
+  const preloaderCircle = document.createElement('span');
 
-    preloaderBlock.classList.add('preloader');
-    preloaderCircle.id = 'loader';
+  preloaderBlock.classList.add('preloader');
+  preloaderCircle.id = 'loader';
 
-    preloaderCircle.innerHTML = svgPreloadMain;
+  preloaderCircle.innerHTML = svgPreloadMain;
 
-    preloaderBlock.append(preloaderCircle);
+  preloaderBlock.append(preloaderCircle);
 
-    return preloaderBlock;
+  return preloaderBlock;
 };

@@ -23,7 +23,7 @@ export const createClientsHeader = () => {
   wrapper.classList.add('header__wrapper');
   inner.classList.add('header__inner');
 
-  inner.append(input, findList)
+  inner.append(input, findList);
   header.append(container);
   logo.append(logoImg);
   form.append(inner);

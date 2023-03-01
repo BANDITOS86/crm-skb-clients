@@ -5,7 +5,6 @@ export const hideContacts = () => {
       const contactLinks = cell.querySelectorAll('.contacts__link');
       if (contactLinks.length) {
         if (contactLinks.length > 4) {
-
           cell.classList.add('more-contacts');
 
           const more = document.createElement('button');
@@ -13,7 +12,7 @@ export const hideContacts = () => {
 
           more.textContent = `+${contactLinks.length - 4}`;
 
-          if(!cell.querySelector('button')) {
+          if (!cell.querySelector('button')) {
             cell.append(more);
           }
 

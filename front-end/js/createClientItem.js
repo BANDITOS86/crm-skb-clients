@@ -77,7 +77,7 @@ export const createClientItem = data => {
   clientEdit.addEventListener('click', () => {
     editSpinner.style.display = 'block';
     clientEdit.classList.add('action-wait');
-    
+
     setTimeout(() => {
       document.body.append(editClient.editModal);
 
@@ -99,7 +99,6 @@ export const createClientItem = data => {
     }, 1500);
   });
 
-
   editSpinner.innerHTML = svgSpinner;
   deleteSpinner.innerHTML = svgSpinner;
   clientId.textContent = data.id.substr(0, 6);
@@ -113,7 +112,7 @@ export const createClientItem = data => {
   changedDate.textContent = formatDate(data.updatedAt);
   changedTime.textContent = formatTime(data.updatedAt);
 
-  clientIdTd.append(clientId)
+  clientIdTd.append(clientId);
   clientFullName.append(clientName, clientSurname, clientLastName);
   clientCreated.append(createDate, createdTime);
   clientChanged.append(changedDate, changedTime);
