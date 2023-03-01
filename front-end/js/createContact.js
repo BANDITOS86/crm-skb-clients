@@ -1,5 +1,6 @@
 // Создание разментки добавления новго контакта
 import { svgDelete } from './svg.js';
+import { telMask } from './telMask.js';
 
 export const createContactItem = () => {
   const contact = document.createElement('div');
@@ -12,6 +13,7 @@ export const createContactItem = () => {
   const contactEmail = document.createElement('li');
   const contactOther = document.createElement('li');
   const contactInput = document.createElement('input');
+  const contactPhoneInput = document.createElement('input');
   const contactDelete = document.createElement('button');
   const contactDeleteTooltip = document.createElement('span');
 
@@ -27,6 +29,7 @@ export const createContactItem = () => {
   contactOther.classList.add('contact__item');
   contactInput.classList.add('contact__input');
   contactDelete.classList.add('contact__delete');
+  contactPhoneInput.classList.add('contact__input');
 
   contactName.textContent = 'Телефон';
   contactDeleteTooltip.textContent = 'Удалить контакт';
@@ -38,6 +41,8 @@ export const createContactItem = () => {
   contactInput.placeholder = 'Введите данные контакта';
   contactInput.type = 'text';
   contactDelete.innerHTML = svgDelete;
+  contactInput.id = contactName.textContent;
+  contactPhoneInput.placeholder = 'Введите телефон';
 
   // Удаление поля добавления нового контакта
   contactDelete.addEventListener('click', e => {
@@ -62,14 +67,6 @@ export const createContactItem = () => {
     contactName.classList.remove('contact__list--active');
   });
 
-  const setType = type => {
-    type.addEventListener('click', () => {
-      contactName.textContent = type.textContent;
-      contactList.classList.remove('contact__list--active');
-      contactName.classList.remove('contact__list--active');
-    });
-  };
-
   const typesArray = [
     contactEmail,
     contactFb,
@@ -77,20 +74,37 @@ export const createContactItem = () => {
     contactPhone,
     contactOther,
   ];
-  
+
+  telMask(contactPhoneInput);
+
   for (const type of typesArray) {
-    setType(type);
+    type.addEventListener('click', () => {
+      contactInput.value = '';
+      contactName.textContent = type.textContent;
+
+      if (contactName.textContent === 'Телефон') {
+        contact.innerHTML = '';
+        contact.append(contactType, contactPhoneInput, contactDelete);
+        telMask(contactPhoneInput);
+      } else {
+        contact.innerHTML = '';
+        contact.append(contactType, contactInput, contactDelete);
+      }
+
+      contactList.classList.remove('contact__list--active');
+      contactName.classList.remove('contact__list--active');
+    });
   }
 
   contactDelete.append(contactDeleteTooltip);
-  contact.append(contactType, contactInput, contactDelete);
+  contact.append(contactType, contactPhoneInput, contactDelete);
   contactType.append(contactName, contactList);
   contactList.append(
     contactPhone,
     contactEmail,
     contactVk,
     contactFb,
-    contactOther,
+    contactOther
   );
 
   return {

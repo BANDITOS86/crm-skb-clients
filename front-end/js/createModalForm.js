@@ -3,6 +3,7 @@ import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
 import { validateClientForm } from "./validateForm.js";
 import { svgSpinner } from './svg.js';
+import { telMask } from './telMask.js';
 
 export const createClientsForm = () => {
   const modalTitle = document.createElement('h2');
@@ -127,6 +128,7 @@ export const createClientsForm = () => {
 
     if (contactsItems.length < 9) {
       const contactItem = createContactItem();
+
       contactsBlock.prepend(contactItem.contact);
       contactsBlock.style.backgroundColor = 'var(--gray-suit-02-color)';
       // если полей 5, тогда модальное окно ниже от верха на 70%
