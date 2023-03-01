@@ -1,15 +1,13 @@
-import { telMask } from './telMask.js';
-
 export const validateClientContact = (contactType, contactInput) => {
   const writeValue = document.getElementById('writeName');
   const onlyNumbers = /[^0-9]+$/g;
   const onlyEmail = /[^a-zA-Z|@|.]+$/g;
 
   const onInputValue = input => {
-    input.addEventListener('input', () => {
-      input.style.borderColor = 'var(--gray-suit-color)';
-      writeValue.textContent = '';
-    });
+      input.addEventListener('input', () => {
+          input.style.borderColor = 'var(--gray-suit-color)';
+          writeValue.textContent = '';
+      });
 
     input.oncut =
       input.oncopy =

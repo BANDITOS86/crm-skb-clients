@@ -2,6 +2,7 @@
 import { createContactItem } from './createContact.js';
 import { svgContactDefault, svgContactHover } from './svg.js';
 import { svgSpinner } from './svg.js';
+import { telMask } from './telMask.js';
 
 export const createClientsForm = () => {
   const modalTitle = document.createElement('h2');
