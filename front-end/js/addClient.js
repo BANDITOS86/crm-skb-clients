@@ -53,7 +53,6 @@ export const addClientModal = () => {
     clientObj.surname = createForm.inputSurname.value;
     clientObj.lastName = createForm.inputLastName.value;
     clientObj.contacts = contacts;
-    console.log(clientObj);
 
     const spinner = document.querySelector('.modal__spinner');
 

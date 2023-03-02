@@ -66,6 +66,7 @@ export const editClientModal = data => {
 
     createContact.contactName.textContent = contact.type;
     createContact.contactInput.value = contact.value;
+    createContact.contactPhoneInput.value = contact.value;
 
     createForm.contactsBlock.prepend(createContact.contact);
     createForm.contactsBlock.style.backgroundColor = 'var(--athens-gray-color)';

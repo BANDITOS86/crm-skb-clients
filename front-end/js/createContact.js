@@ -80,6 +80,7 @@ export const createContactItem = () => {
   for (const type of typesArray) {
     type.addEventListener('click', () => {
       contactInput.value = '';
+      contactPhoneInput.value = '';
       contactName.textContent = type.textContent;
 
       if (contactName.textContent === 'Телефон') {
@@ -111,6 +112,7 @@ export const createContactItem = () => {
     contact,
     contactName,
     contactInput,
+    contactPhoneInput,
     contactDelete,
   };
 };
